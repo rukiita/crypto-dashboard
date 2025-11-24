@@ -1,6 +1,6 @@
+"use client";
 import Sidebar from "@/components/Sidebar";
 import "./globals.css";
-import Link from "next/link";
 import Header from "@/components/Header";
 
 export default function RootLayout({
@@ -10,8 +10,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Header />
       <body>
+        <Header />
         <div className="flex">
           <Sidebar />
           <main>{children}</main>

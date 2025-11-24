@@ -1,5 +1,14 @@
 import React from "react";
+import { Line, LineChart } from "recharts";
 
-export default function MarketsChart() {
-  return <div>MarketsChart</div>;
+interface MarketsChart {
+  coinId: string;
+}
+
+export default function MarketsChart({ coinId }: MarketsChart) {
+  return (
+    <>
+      <div>{coinId}</div>
+    </>
+  );
 }

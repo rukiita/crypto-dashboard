@@ -1,15 +1,19 @@
-import React from "react";
+import { Coin } from "@/src/lib/coin";
 
-export default function () {
+interface CoinCardProps {
+  coin: Coin;
+}
+
+export default function CoinCard({ coin }: CoinCardProps) {
   return (
     <div className="flex">
       <div>
-        <img src="" alt="" />
-        <p>ETH</p>
+        <img src={coin.imageUrl} alt="" />
+        <p>{coin.symbol}</p>
       </div>
       <div>
-        <p>¥434234234</p>
-        <p>+4.32%</p>
+        <p>{coin.priceUsd}</p>
+        <p>{coin.changePercent24Hr}</p>
       </div>
     </div>
   );
