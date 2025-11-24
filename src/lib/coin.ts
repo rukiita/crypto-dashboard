@@ -30,7 +30,7 @@ export interface CoinHistory {
 }
 
 export interface HistoryResponse {
-  price: string;
+  priceUsd: string;
   time: number;
   date: string;
 }

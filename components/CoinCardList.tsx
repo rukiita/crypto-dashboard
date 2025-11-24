@@ -11,14 +11,15 @@ export default function CoinCardList({
   coinList,
   onSelectCoin,
 }: CoinCardListProps) {
-  console.log("coinList", coinList);
   return (
     <>
-      {coinList.map((coin) => (
-        <button key={coin.id} onClick={() => onSelectCoin}>
-          <CoinCard coin={coin} />
-        </button>
-      ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 items-stretch">
+        {coinList.map((coin) => (
+          <button key={coin.id} onClick={() => onSelectCoin(coin.id)}>
+            <CoinCard coin={coin} />
+          </button>
+        ))}
+      </div>
     </>
   );
 }

@@ -2,7 +2,7 @@ import { Coin, CoinCapAsset, CoinHistory, HistoryResponse } from "./coin";
 
 const BASE_URL = "https://rest.coincap.io/v3";
 
-export const getCoinList = async (limit: number = 3): Promise<Coin[]> => {
+export const getCoinList = async (limit: number = 20): Promise<Coin[]> => {
   const response = await fetch(`${BASE_URL}/assets?limit=${limit}&offset=0`, {
     method: "GET",
     headers: {
@@ -67,7 +67,7 @@ export const getCoinHistory = async (
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: `Bearer ${process.env.API_KEY}`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
       },
     }
   );
@@ -79,7 +79,7 @@ export const getCoinHistory = async (
   const json = await response.json();
 
   return json.data.map((item: HistoryResponse) => ({
-    price: parseFloat(item.price),
+    priceUsd: parseFloat(item.priceUsd),
     time: item.time,
     date: item.date,
   }));
@@ -90,9 +90,10 @@ export const getJpyRate = async (): Promise<number> => {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization: `Bearer ${process.env.API_KEY}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
     },
   });
+  console.log("getJPYRate");
 
   if (!response.ok) {
     throw new Error("Failed to fetch JPY rate");
