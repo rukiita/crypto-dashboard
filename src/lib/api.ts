@@ -2,20 +2,14 @@ import { Coin, CoinCapAsset, CoinHistory, HistoryResponse } from "./coin";
 
 const BASE_URL = "https://rest.coincap.io/v3";
 
-export const getCoinList = async (
-  offset: number = 0,
-  limit: number = 3
-): Promise<Coin[]> => {
-  const response = await fetch(
-    `${BASE_URL}/assets?limit=${limit}&offset=${offset}`,
-    {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
-      },
-    }
-  );
+export const getCoinList = async (limit: number = 3): Promise<Coin[]> => {
+  const response = await fetch(`${BASE_URL}/assets?limit=${limit}&offset=0`, {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+    },
+  });
   if (!response.ok) {
     throw new Error("Failed to fetch coins");
   }
@@ -96,6 +90,7 @@ export const getJpyRate = async (): Promise<number> => {
     method: "GET",
     headers: {
       accept: "application/json",
+      Authorization: `Bearer ${process.env.API_KEY}`,
     },
   });
 

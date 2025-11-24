@@ -12,7 +12,7 @@ export default function CoinCard({ coin }: CoinCardProps) {
         <p>{coin.symbol}</p>
       </div>
       <div>
-        <p>{coin.priceUsd}</p>
+        <p>${coin.priceUsd}</p>
         <p>{coin.changePercent24Hr}</p>
       </div>
     </div>
