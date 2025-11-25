@@ -37,14 +37,12 @@ export default function CoinCardList({
       </div>
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4 items-stretch">
         {coinList.map((coin) => (
-          // <button key={coin.id} onClick={() => onSelectCoin(coin.id)}>
           <CoinCard
             key={coin.id}
             coin={coin}
             isSelected={coin.id == selectedCoinId}
             onClick={() => onSelectCoin(coin.id)}
           />
-          // </button>
         ))}
       </div>
     </>

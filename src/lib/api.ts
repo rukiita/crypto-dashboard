@@ -35,23 +35,30 @@ export const getCoinList = async (
   }));
 };
 
-export const getCoinDetail = async (id: string): Promise<Coin> => {
-  const response = await fetch(`${BASE_URL}/assets/${id}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
-    },
-  });
+export const getSearchedCoins = async (
+  query: string,
+  limit: number = 5
+): Promise<Coin[]> => {
+  const response = await fetch(
+    `${BASE_URL}/assets/?search=${query}&limit=${limit}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+      },
+    }
+  );
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch coin detail: ${id}`);
+    throw new Error(`Failed to fetch coin detail: ${query}`);
   }
+  console.log("searchCoin!");
 
   const json = await response.json();
-  const asset: CoinCapAsset = json.data;
+  const assets: CoinCapAsset[] = json.data;
 
-  return {
+  return assets.map((asset) => ({
     id: asset.id,
     rank: parseInt(asset.rank),
     symbol: asset.symbol,
@@ -60,7 +67,7 @@ export const getCoinDetail = async (id: string): Promise<Coin> => {
     changePercent24Hr: parseFloat(asset.changePercent24Hr),
     marketCapUsd: parseFloat(asset.marketCapUsd),
     imageUrl: `https://assets.coincap.io/assets/icons/${asset.symbol.toLowerCase()}@2x.png`,
-  };
+  }));
 };
 
 export const getCoinHistory = async (

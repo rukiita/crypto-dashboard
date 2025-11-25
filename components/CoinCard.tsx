@@ -37,7 +37,6 @@ export default function CoinCard({ coin, isSelected, onClick }: CoinCardProps) {
         />
         <div>
           <p className="font-bold text-lg text-gray-800">{coin.symbol}</p>
-          <p className="text-sm text-gray-500">{coin.name}</p>
         </div>
       </div>
 

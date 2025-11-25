@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCoinDetail } from "@/src/lib/api";
+import { getSearchedCoins } from "@/src/lib/api";
 
-export const useSearchCoin = (id: string) => {
+export const useSearchCoin = (query: string) => {
   return useQuery({
-    queryKey: ["searchCoin"],
-    queryFn: () => getCoinDetail(id),
-    staleTime: 1000 * 600 * 5,
+    queryKey: ["searchedCoins", query],
+    queryFn: () => getSearchedCoins(query),
+    enabled: !!query, //Prevent the API call when the query is empty.
+    staleTime: 1000 * 60,
   });
 };

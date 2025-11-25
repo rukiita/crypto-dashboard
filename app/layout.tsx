@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import React from "react";
 import { CurrencyProvider } from "@/providers/CurrencyProvider";
+import { SelectedCoinProvider } from "@/providers/SelectedCoinProvider ";
 
 export default function RootLayout({
   children,
@@ -16,9 +17,10 @@ export default function RootLayout({
       <body>
         <ReactQueryProvider>
           <CurrencyProvider>
-            <Header />
-
-            <main>{children}</main>
+            <SelectedCoinProvider>
+              <Header />
+              <main>{children}</main>
+            </SelectedCoinProvider>
           </CurrencyProvider>
         </ReactQueryProvider>
       </body>
