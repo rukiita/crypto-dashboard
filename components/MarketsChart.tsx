@@ -17,7 +17,7 @@ interface MarketsChartProps {
 
 export default function MarketsChart({ coinId }: MarketsChartProps) {
   const { data: history = [], isLoading } = useCoinHistory(coinId);
-  const { currency, rate, formatPrice } = useCurrency();
+  const { currency, rate } = useCurrency();
 
   const chartData = history.map((item) => {
     const price =
@@ -45,8 +45,13 @@ export default function MarketsChart({ coinId }: MarketsChartProps) {
       </h2>
 
       {/* グラフエリア: 高さを指定しないとRechartsは表示されない */}
-      <div className="h-[400px] w-[700px]">
-        <ResponsiveContainer width="100%" height="100%">
+      <div className="h-[350px] w-full">
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          minWidth={800}
+          minHeight={400}
+        >
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis dataKey="date" minTickGap={30} tick={{ fontSize: 12 }} />

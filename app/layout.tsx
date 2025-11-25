@@ -14,7 +14,7 @@ export default function RootLayout({
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning={true}>
         <ReactQueryProvider>
           <CurrencyProvider>
             <SelectedCoinProvider>
