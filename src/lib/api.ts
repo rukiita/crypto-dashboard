@@ -106,7 +106,6 @@ export const getJpyRate = async (): Promise<number> => {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
     },
   });
-  console.log("getJPYRate");
 
   if (!response.ok) {
     throw new Error("Failed to fetch JPY rate");

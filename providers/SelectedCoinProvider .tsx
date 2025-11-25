@@ -9,7 +9,7 @@ import {
 
 interface SelectedCoinContextType {
   selectedCoinId: string | null;
-  setSelectedCoinId: (id: string | null) => void;
+  setSelectedCoinId: Dispatch<SetStateAction<string | null>>;
 }
 
 const SelectedCoinContext = createContext<SelectedCoinContextType | undefined>(

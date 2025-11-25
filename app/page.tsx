@@ -2,12 +2,13 @@
 import CoinCardList from "@/components/CoinCardList";
 import MarketsChart from "@/components/MarketsChart";
 import { useCoins } from "@/hooks/useCoins";
+import { useCoinSelection } from "@/providers/SelectedCoinProvider ";
 import { useState } from "react";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const { data: coinList, isLoading, error } = useCoins(currentPage);
-  const [selectedCoinId, setSelectedCoinId] = useState<string | null>(null);
+  const { selectedCoinId, setSelectedCoinId } = useCoinSelection();
 
   if (isLoading) return <div className="p-4">Loading Coins...</div>;
   if (error || !coinList || coinList.length === 0)
