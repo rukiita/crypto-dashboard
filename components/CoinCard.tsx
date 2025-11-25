@@ -3,9 +3,11 @@ import { Coin } from "@/src/lib/coin";
 
 interface CoinCardProps {
   coin: Coin;
+  isSelected: boolean;
+  onClick: () => void;
 }
 
-export default function CoinCard({ coin }: CoinCardProps) {
+export default function CoinCard({ coin, isSelected, onClick }: CoinCardProps) {
   const { formatPrice } = useCurrency();
 
   // 変動率の色を決定
@@ -17,7 +19,17 @@ export default function CoinCard({ coin }: CoinCardProps) {
       : "text-gray-500";
 
   return (
-    <div className="flex items-center justify-between p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all w-full border border-gray-100">
+    <button
+      onClick={onClick}
+      className={`
+        w-full h-full flex items-center justify-between p-4 rounded-xl shadow-md transition-all border-2
+        ${
+          isSelected
+            ? "border-blue-500 bg-blue-50 ring-2 ring-blue-200"
+            : "border-transparent bg-white hover:shadow-lg hover:border-gray-200"
+        }
+      `}
+    >
       <div className="flex items-center space-x-3">
         <img
           src={coin.imageUrl}
@@ -40,6 +52,6 @@ export default function CoinCard({ coin }: CoinCardProps) {
           {coin.changePercent24Hr.toFixed(2)}%
         </p>
       </div>
-    </div>
+    </button>
   );
 }

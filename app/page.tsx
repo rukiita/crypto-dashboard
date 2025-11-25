@@ -22,6 +22,7 @@ export default function Home() {
         onSelectCoin={setSelectedCoinId}
         onPageChange={setCurrentPage}
         currentPage={currentPage}
+        selectedCoinId={activeCoinId}
       />
     </>
   );

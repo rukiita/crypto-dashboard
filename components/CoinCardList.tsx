@@ -7,6 +7,7 @@ interface CoinCardListProps {
   onSelectCoin: Dispatch<SetStateAction<string | null>>;
   onPageChange: Dispatch<SetStateAction<number>>;
   currentPage: number;
+  selectedCoinId: string;
 }
 
 export default function CoinCardList({
@@ -14,6 +15,7 @@ export default function CoinCardList({
   onSelectCoin,
   onPageChange,
   currentPage,
+  selectedCoinId,
 }: CoinCardListProps) {
   return (
     <>
@@ -35,9 +37,14 @@ export default function CoinCardList({
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 items-stretch">
         {coinList.map((coin) => (
-          <button key={coin.id} onClick={() => onSelectCoin(coin.id)}>
-            <CoinCard coin={coin} />
-          </button>
+          // <button key={coin.id} onClick={() => onSelectCoin(coin.id)}>
+          <CoinCard
+            key={coin.id}
+            coin={coin}
+            isSelected={coin.id == selectedCoinId}
+            onClick={() => onSelectCoin(coin.id)}
+          />
+          // </button>
         ))}
       </div>
     </>
