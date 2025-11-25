@@ -50,7 +50,7 @@ export default function MarketsChart({ coinId }: MarketsChartProps) {
           width="100%"
           height="100%"
           minWidth={800}
-          minHeight={400}
+          minHeight={350}
         >
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
