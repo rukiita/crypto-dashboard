@@ -14,7 +14,7 @@ export default function Home() {
   if (error || !coinList || coinList.length === 0)
     return <div className="p-4 text-red-500">Failed to load data</div>;
 
-  const activeCoinId = selectedCoinId ?? coinList?.[0]?.id;
+  const activeCoinId = selectedCoinId ?? coinList[0].id;
   return (
     <>
       <MarketsChart coinId={activeCoinId} />

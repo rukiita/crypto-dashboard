@@ -46,12 +46,7 @@ export default function MarketsChart({ coinId }: MarketsChartProps) {
 
       {/* グラフエリア: 高さを指定しないとRechartsは表示されない */}
       <div className="h-[350px] w-full">
-        <ResponsiveContainer
-          width="100%"
-          height="100%"
-          minWidth={800}
-          minHeight={350}
-        >
+        <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis dataKey="date" minTickGap={30} tick={{ fontSize: 12 }} />
