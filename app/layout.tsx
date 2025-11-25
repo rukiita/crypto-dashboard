@@ -17,9 +17,8 @@ export default function RootLayout({
         <ReactQueryProvider>
           <CurrencyProvider>
             <Header />
-            <div className="flex">
-              <main>{children}</main>
-            </div>
+
+            <main>{children}</main>
           </CurrencyProvider>
         </ReactQueryProvider>
       </body>

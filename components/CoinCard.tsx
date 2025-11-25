@@ -10,7 +10,6 @@ interface CoinCardProps {
 export default function CoinCard({ coin, isSelected, onClick }: CoinCardProps) {
   const { formatPrice } = useCurrency();
 
-  // 変動率の色を決定
   const priceColorClass =
     coin.changePercent24Hr > 0
       ? "text-green-500"
