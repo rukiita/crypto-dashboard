@@ -11,7 +11,7 @@ A high-performance cryptocurrency dashboard built with modern React patterns. Th
 | Category | Technologies |
 | :--- | :--- |
 | **Language** | TypeScript |
-| **Framework** | Next.js (App Router) |
+| **Framework** | Next.js(App Router) |
 | **State/Cache** | TanStack Query, Context API |
 | **Hooks** | Custom Hooks (useDebounce, etc.) |
 | **UI/UX** | Shadcn UI, Recharts, Tailwind CSS |
